@@ -44,7 +44,13 @@ first_cpu:
 	ldr x4, =UART_BASE
 	mov w1, #66
 	str w1, [x4]
-	
+
+	/* 
+	 * configure stack
+	 */
+	adrp x0, stacktop
+	mov sp, x0
+
 	b bootmain
 
 second_cpu:	
