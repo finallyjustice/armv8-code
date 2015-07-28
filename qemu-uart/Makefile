@@ -16,7 +16,7 @@ boot.o: boot.S
 	$(CC) boot.S -c -o boot.o
 
 $(IMAGE): kernel.ld boot.o $(OBJS)
-	$(LD) boot.o $(OBJS) libgcc.a -T kernel.ld -o $(IMAGE)
+	$(LD) boot.o $(OBJS) -T kernel.ld -o $(IMAGE)
 	$(OBJDUMP) -d kernel.axf > kernel.asm
 	$(OBJDUMP) -t kernel.axf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > kernel.sym
 
